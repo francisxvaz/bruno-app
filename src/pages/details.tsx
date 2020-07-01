@@ -1,23 +1,40 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const people = [
-  { v: "car", name: "bruno" },
-  { v: "bus", name: "jayden" },
-  { v: "airplane", name: "ethan" },
-  { v: "rickshaw", name: "francis" },
-  { v: "walking", name: "leena" },
-];
 
-export default function Details() {
+export default function Details({blogs}) {
+
   return <div>
-    {people.map(e => (
-        <div>
-          <Link as={`/${e.v}/${e.name}`} href="/[vehicles]/[person]">
-            <a>{e.name}</a>
-          </Link>
-        </div>
-    ))}
+            <pre>{blogs?.bpi?.USD.symbol}</pre>
+            <pre>{blogs?.bpi?.USD.code}</pre>
+            <pre>{blogs?.bpi?.USD.rate}</pre>
+            <pre>{blogs?.bpi?.USD.description}</pre>
+            <pre>{blogs?.bpi?.USD.ratefloat}</pre>
+            <hr/>
+            <pre>{blogs?.bpi?.EUR.symbol}</pre>
+            <pre>{blogs?.bpi?.EUR.code}</pre>
+            <pre>{blogs?.bpi?.EUR.rate}</pre>
+            <pre>{blogs?.bpi?.EUR.description}</pre>
+            <pre>{blogs?.bpi?.EUR.ratefloat}</pre>
+            <hr/>
+            <pre>{blogs?.bpi?.GBP.symbol}</pre>
+            <pre>{blogs?.bpi?.GBP.code}</pre>
+            <pre>{blogs?.bpi?.GBP.rate}</pre>
+            <pre>{blogs?.bpi?.GBP.description}</pre>
+            <pre>{blogs?.bpi?.GBP.ratefloat}</pre>
+            <hr/>
     </div>
 }
+
+export async function getStaticProps(){
+    debugger;
+    const response = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
+    const blogs = await response.json()
+    return {
+        props: {
+          blogs
+        }
+      }
+}    
 
 
