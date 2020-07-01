@@ -1,11 +1,15 @@
 import React from 'react'
+import {useRouter} from "next/router";
 
-function Bruno() {
+function Person() {
+
+    const router = useRouter();
+
     return (
         <div>
-            Here is the car!!
+            {router.query.person}'s' {router.query.vehicles}
         </div>
     )
 }
 
-export default Bruno
+export default Person
