@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import sqlite3 from 'sqlite3'
 import { open } from 'sqlite'
 
-export default async  function getAllVehicles(
+export default async  function getAllPeople(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -12,6 +12,6 @@ export default async  function getAllVehicles(
     driver: sqlite3.Database
   });
   
-  const vehicles = await db.all('SELECT * FROM Vehicle');
-    res.json(vehicles);
+  const people = await db.all('SELECT * FROM Person');
+    res.json(people);
 }
