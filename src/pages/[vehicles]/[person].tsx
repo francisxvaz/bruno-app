@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 
 function Person() {
 
-    const router = useRouter();
+    const router = useRouter(); 
 
     return (
         <div>
